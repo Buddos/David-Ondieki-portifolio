@@ -12,7 +12,12 @@
       box-sizing: border-box;
     }
 
+    html {
+      overflow-x: hidden;
+    }
+
     body {
+      min-width: 0;
       background-color: #0A192F;
       font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
       color: #E6F1FF;
@@ -133,6 +138,7 @@
 
     .about-image {
       flex: 1 1 350px;
+      min-width: 0;
       background: #0D2B4E;
       border-radius: 32px;
       padding: 30px;
@@ -202,6 +208,7 @@
 
     .about-details {
       flex: 2 1 500px;
+      min-width: 0;
     }
 
     .detail-section {
