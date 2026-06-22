@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Contact · David Ondieki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0A192F;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #E6F1FF;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: 0.2px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* Navigation */
+    .navbar {
+      background-color: #0D2B4E;
+      border-bottom: 2px solid rgba(0, 245, 212, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background-color: rgba(13, 43, 78, 0.94);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.7);
+    }
+
+    .nav-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-weight: 750;
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+      color: #E6F1FF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo i {
+      color: #3B82F6;
+      font-size: 2.2rem;
+      filter: drop-shadow(0 0 14px rgba(59, 130, 246, 0.7));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 38px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 550;
+      font-size: 0.95rem;
+      color: #BFDBFE;
+      transition: all 0.25s ease;
+      padding-bottom: 5px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: #38BDF8;
+      border-bottom-color: #38BDF8;
+      text-shadow: 0 0 10px #38BDF8;
+    }
+
+    .nav-links .active {
+      color: #FF6B35;
+      border-bottom-color: #FF6B35;
+      font-weight: 650;
+      text-shadow: 0 0 10px #FF6B35;
+    }
+
+    /* Page Header */
+    .page-header {
+      padding: 70px 0 40px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 3rem;
+      font-weight: 750;
+      color: #E6F1FF;
+      margin-bottom: 12px;
+    }
+
+    .page-header .underline {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #25D366, #10B981);
+      margin: 0 auto 20px;
+      border-radius: 4px;
+      box-shadow: 0 0 18px rgba(37, 211, 102, 0.6);
+    }
+
+    .page-header p {
+      color: #94a3b8;
+      font-size: 1.15rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Contact Cards */
+    .contact-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 10px 0 60px;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      background: #0D2B4E;
+      border-radius: 22px;
+      padding: 30px 32px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    a.contact-card {
+      cursor: pointer;
+    }
+
+    a.contact-card:hover {
+      border-color: #25D366;
+      box-shadow: 0 0 40px rgba(37, 211, 102, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .contact-card .contact-icon {
+      font-size: 2.6rem;
+      min-width: 60px;
+      text-align: center;
+      filter: drop-shadow(0 0 14px currentColor);
+    }
+
+    .icon-email {
+      color: #3B82F6;
+    }
+
+    .icon-phone {
+      color: #38BDF8;
+    }
+
+    .icon-whatsapp {
+      color: #25D366;
+    }
+
+    .icon-location {
+      color: #F59E0B;
+    }
+
+    .icon-university {
+      color: #A78BFA;
+    }
+
+    .contact-card .contact-detail h3 {
+      font-size: 1.15rem;
+      color: #E6F1FF;
+      margin-bottom: 6px;
+      font-weight: 650;
+    }
+
+    .contact-card .contact-detail p,
+    .contact-card .contact-detail span {
+      color: #BFDBFE;
+      text-decoration: none;
+      font-size: 1.05rem;
+      transition: color 0.2s;
+      line-height: 1.5;
+    }
+
+    a.contact-card:hover .contact-detail p,
+    a.contact-card:hover .contact-detail span {
+      color: #FFFFFF;
+    }
+
+    .contact-card .contact-detail .sub {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* Availability Banner */
+    .availability {
+      background: rgba(37, 211, 102, 0.08);
+      border: 1px solid rgba(37, 211, 102, 0.35);
+      border-radius: 18px;
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .availability i {
+      color: #25D366;
+      font-size: 1.8rem;
+      filter: drop-shadow(0 0 10px #25D366);
+    }
+
+    .availability span {
+      color: #BFDBFE;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .availability strong {
+      color: #34D399;
+    }
+
+    /* CTA */
+    .cta-text {
+      text-align: center;
+      margin-top: 20px;
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    .cta-text i {
+      color: #25D366;
+      margin: 0 6px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #0D2B4E;
+      margin-top: 40px;
+      padding: 32px 0;
+      border-top: 1px solid rgba(59, 130, 246, 0.4);
+      color: #94a3b8;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .footer a {
+      color: #38BDF8;
+      text-decoration: none;
+      font-weight: 500;
+      text-shadow: 0 0 6px #38BDF8;
+    }
+
+    .footer a:hover {
+      color: #25D366;
+      text-shadow: 0 0 12px #25D366;
+    }
+
+    @media (max-width: 760px) {
+      .page-header h1 {
+        font-size: 2.2rem;
+      }
+      .nav-links {
+        gap: 18px;
+      }
+      .contact-card {
+        padding: 22px 20px;
+        gap: 16px;
+      }
+      .contact-card .contact-icon {
+        font-size: 2rem;
+        min-width: 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-content">
+      <a href="index.html" class="logo">
+        <i class="fas fa-dna"></i> David Ondieki
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="leadership.html">Leadership</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="page-header">
+      <h1>Let's Connect</h1>
+      <div class="underline"></div>
+      <p>Feel free to reach out — I'm always open to discussing new opportunities, collaborations, or research ideas.</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Email -->
+      <a href="mailto:davidondieki046@gmail.com" class="contact-card">
+        <div class="contact-icon icon-email">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="contact-detail">
+          <h3>Email</h3>
+          <span>davidondieki046@gmail.com</span>
+          <span class="sub">Click to send an email</span>
+        </div>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/254713666732" target="_blank" rel="noopener noreferrer" class="contact-card">
+        <div class="contact-icon icon-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="contact-detail">
+          <h3>WhatsApp</h3>
+          <span>+254 713 666 732</span>
+          <span class="sub">Click to chat on WhatsApp</span>
+        </div>
+      </a>
+
+      <!-- Phone -->
+      <div class="contact-card">
+        <div class="contact-icon icon-phone">
+          <i class="fas fa-phone-alt"></i>
+        </div>
+        <div class="contact-detail">
+          <h3>Phone</h3>
+          <span>0713666732</span>
+          <span class="sub">0793250255 (Alternative)</span>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="contact-card">
+        <div class="contact-icon icon-location">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="contact-detail">
+          <h3>Location</h3>
+          <span>Mlolongo, Machakos, Kenya</span>
+        </div>
+      </div>
+
+      <!-- University -->
+      <div class="contact-card">
+        <div class="contact-icon icon-university">
+          <i class="fas fa-university"></i>
+        </div>
+        <div class="contact-detail">
+          <h3>University</h3>
+          <span>Egerton University, Njoro</span>
+          <span class="sub">BSc Biomedical Science & Technology</span>
+        </div>
+      </div>
+
+      <!-- Availability -->
+      <div class="availability">
+        <i class="fas fa-clock"></i>
+        <span><strong>Currently Available:</strong> Open to internship & research opportunities. Ready to contribute to KEMRI's EID and Viral Load Program.</span>
+      </div>
+
+      <p class="cta-text">
+        <i class="fab fa-whatsapp"></i> Prefer a quick chat? 
+        <a href="https://wa.me/254713666732" target="_blank" rel="noopener noreferrer" style="color: #25D366; font-weight: 600; text-decoration: none;">
+          Message me on WhatsApp
+        </a>
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <span>© 2026 David Ondieki · Biomedical Portfolio</span>
+      <span>
+        <a href="mailto:davidondieki046@gmail.com"><i class="fas fa-envelope"></i> davidondieki046@gmail.com</a> · 
+        <a href="https://wa.me/254713666732" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

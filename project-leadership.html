@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Student Leadership & Teamwork · David Ondieki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0A192F;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #E6F1FF;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: 0.2px;
+    }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* Navigation */
+    .navbar {
+      background-color: #0D2B4E;
+      border-bottom: 2px solid rgba(0, 245, 212, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background-color: rgba(13, 43, 78, 0.94);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.7);
+    }
+
+    .nav-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-weight: 750;
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+      color: #E6F1FF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo i {
+      color: #3B82F6;
+      font-size: 2.2rem;
+      filter: drop-shadow(0 0 14px rgba(59, 130, 246, 0.7));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 38px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 550;
+      font-size: 0.95rem;
+      color: #BFDBFE;
+      transition: all 0.25s ease;
+      padding-bottom: 5px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: #38BDF8;
+      border-bottom-color: #38BDF8;
+      text-shadow: 0 0 10px #38BDF8;
+    }
+
+    .nav-links .active {
+      color: #FF6B35;
+      border-bottom-color: #FF6B35;
+      font-weight: 650;
+      text-shadow: 0 0 10px #FF6B35;
+    }
+
+    /* Page Header */
+    .page-header {
+      padding: 60px 0 30px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 3rem;
+      font-weight: 750;
+      color: #E6F1FF;
+      margin-bottom: 12px;
+    }
+
+    .page-header .underline {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #3B82F6, #38BDF8);
+      margin: 0 auto 20px;
+      border-radius: 4px;
+      box-shadow: 0 0 18px rgba(59, 130, 246, 0.6);
+    }
+
+    .page-header p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+    }
+
+    .project-details {
+      padding: 40px 0 60px;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 40px;
+      padding: 30px;
+      background: #0D2B4E;
+      border-radius: 20px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 0 40px rgba(37, 99, 235, 0.2);
+    }
+
+    .project-icon {
+      font-size: 3rem;
+      color: #38BDF8;
+      filter: drop-shadow(0 0 20px #38BDF8);
+    }
+
+    .project-header-text h2 {
+      font-size: 2rem;
+      color: #E6F1FF;
+      margin-bottom: 8px;
+    }
+
+    .project-meta {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .meta-item i {
+      color: #38BDF8;
+    }
+
+    .section {
+      margin-bottom: 50px;
+    }
+
+    .section h3 {
+      font-size: 1.8rem;
+      color: #38BDF8;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section h3 i {
+      color: #3B82F6;
+      filter: drop-shadow(0 0 8px #3B82F6);
+    }
+
+    .section p {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .highlight-box {
+      background: #0D2B4E;
+      border-left: 5px solid #F59E0B;
+      padding: 25px;
+      border-radius: 12px;
+      margin: 25px 0;
+      box-shadow: 0 0 24px rgba(245, 158, 11, 0.15);
+    }
+
+    .highlight-box h4 {
+      color: #FBBF24;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .highlight-box p {
+      color: #BFDBFE;
+      margin: 8px 0;
+    }
+
+    .key-points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 25px 0;
+    }
+
+    .point-card {
+      background: #0D2B4E;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      text-align: center;
+    }
+
+    .point-card i {
+      font-size: 2rem;
+      color: #F59E0B;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 0 10px #F59E0B);
+    }
+
+    .point-card h4 {
+      color: #E6F1FF;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .point-card p {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid #3B82F6;
+      color: #60A5FA;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.25s;
+      margin-bottom: 30px;
+    }
+
+    .btn-back:hover {
+      background: #3B82F6;
+      color: #FFFFFF;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+    }
+
+    .footer {
+      background: #0D2B4E;
+      margin-top: 70px;
+      padding: 32px 0;
+      border-top: 1px solid rgba(59, 130, 246, 0.4);
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer a {
+      color: #38BDF8;
+      text-decoration: none;
+      font-weight: 500;
+      text-shadow: 0 0 6px #38BDF8;
+    }
+
+    .footer a:hover {
+      color: #F59E0B;
+      text-shadow: 0 0 12px #F59E0B;
+    }
+
+    @media (max-width: 760px) {
+      .page-header h1 {
+        font-size: 2.2rem;
+      }
+      .project-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .section h3 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-content">
+      <a href="index.html" class="logo">
+        <i class="fas fa-dna"></i> David Ondieki
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="leadership.html">Leadership</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+
+    <div class="page-header">
+      <h1>Student Leadership & Teamwork</h1>
+      <div class="underline"></div>
+      <p>Egerton University Student Congress · 2023–2025</p>
+    </div>
+
+    <div class="project-details">
+      <div class="project-header">
+        <div class="project-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="project-header-text">
+          <h2>Congress Person · Egerton University Student Congress</h2>
+          <div class="project-meta">
+            <div class="meta-item">
+              <i class="fas fa-calendar"></i>
+              <span>2023–2025</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-university"></i>
+              <span>Egerton University</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-star"></i>
+              <span>Integrity: 100%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3><i class="fas fa-target"></i> Role Overview</h3>
+        <p>
+          Served as a Congress Person in the Egerton University Student Congress from 2023 to 2025, representing student interests 
+          and advocating for student welfare. This role involved organizing forums, facilitating communication between students and 
+          administration, and working collaboratively while maintaining balance with academic commitments and participation in the 
+          university football team.
+        </p>
+      </div>
+
+      <div class="key-points">
+        <div class="point-card">
+          <i class="fas fa-bullhorn"></i>
+          <h4>Representation</h4>
+          <p>Represented student body interests in official governance structures</p>
+        </div>
+        <div class="point-card">
+          <i class="fas fa-handshake"></i>
+          <h4>Advocacy</h4>
+          <p>Advocated for student welfare and organizational improvements</p>
+        </div>
+        <div class="point-card">
+          <i class="fas fa-microphone-alt"></i>
+          <h4>Community Engagement</h4>
+          <p>Organized forums and facilitated student-administration dialogue</p>
+        </div>
+        <div class="point-card">
+          <i class="fas fa-users-class"></i>
+          <h4>Collaboration</h4>
+          <p>Worked effectively with diverse groups on common objectives</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3><i class="fas fa-briefcase"></i> Key Responsibilities</h3>
+        <div class="highlight-box">
+          <h4>Student Representation & Advocacy</h4>
+          <p>
+            As a Congress Person, I represented my constituency in the Student Congress, bringing student concerns and suggestions 
+            to the table. I worked to ensure that student voices were heard in university decision-making processes.
+          </p>
+        </div>
+        <p>
+          <strong>Specific Activities:</strong>
+        </p>
+        <ul style="color: #cbd5e1; margin: 15px 0 15px 30px; line-height: 1.8;">
+          <li>Attended regular Congress meetings and committee sessions</li>
+          <li>Represented constituent interests in policy discussions</li>
+          <li>Organized and moderated student forums on relevant issues</li>
+          <li>Facilitated communication between students and university administration</li>
+          <li>Participated in student welfare initiatives and events</li>
+          <li>Collaborated with other Congress members on organizational projects</li>
+          <li>Maintained transparency and integrity in all representative duties</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3><i class="fas fa-award"></i> Performance & Impact</h3>
+        <div class="highlight-box">
+          <h4>Integrity Rating: 100%</h4>
+          <p>
+            Maintained perfect integrity throughout my tenure, earning trust and respect from both peers and administration. 
+            Consistently upheld the highest ethical standards in all representative activities and decision-making processes.
+          </p>
+        </div>
+        <p>
+          <strong>Notable Accomplishments:</strong>
+        </p>
+        <ul style="color: #cbd5e1; margin: 15px 0 15px 30px; line-height: 1.8;">
+          <li>Successfully organized multiple student forums addressing key university issues</li>
+          <li>Contributed to improvements in student welfare policies and initiatives</li>
+          <li>Built strong relationships between student body and university administration</li>
+          <li>Demonstrated commitment to student representation despite demanding schedule</li>
+          <li>Maintained academic progress while fulfilling leadership responsibilities</li>
+          <li>Balanced athletics participation with governance responsibilities</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3><i class="fas fa-lightbulb"></i> Leadership Skills Developed</h3>
+        <div class="key-points">
+          <div class="point-card">
+            <i class="fas fa-comments"></i>
+            <h4>Communication</h4>
+            <p>Effective articulation of ideas and active listening skills</p>
+          </div>
+          <div class="point-card">
+            <i class="fas fa-puzzle-piece"></i>
+            <h4>Collaboration</h4>
+            <p>Working with diverse groups toward common goals</p>
+          </div>
+          <div class="point-card">
+            <i class="fas fa-balance-scale"></i>
+            <h4>Ethical Leadership</h4>
+            <p>Maintaining integrity and accountability in decision-making</p>
+          </div>
+          <div class="point-card">
+            <i class="fas fa-chart-line"></i>
+            <h4>Organizational Skills</h4>
+            <p>Event planning and management of multiple initiatives</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3><i class="fas fa-heart"></i> Balancing Multiple Commitments</h3>
+        <p>
+          Throughout my tenure as Congress Person, I successfully balanced leadership responsibilities with:
+        </p>
+        <ul style="color: #cbd5e1; margin: 15px 0 15px 30px; line-height: 1.8;">
+          <li><strong>Academic Excellence:</strong> Maintained strong grades while serving in Congress</li>
+          <li><strong>Athletics:</strong> Continued active participation in the university football team</li>
+          <li><strong>Personal Development:</strong> Engaged in research and laboratory work</li>
+          <li><strong>Community Service:</strong> Contributed to student welfare initiatives</li>
+        </ul>
+        <p>
+          This demonstrated ability to manage multiple priorities effectively is a valuable skill that extends to professional environments.
+        </p>
+      </div>
+
+      <div class="section">
+        <h3><i class="fas fa-graduation-cap"></i> Leadership Insights</h3>
+        <p>
+          My experience as a Congress Person has deepened my understanding of organizational dynamics, stakeholder management, and 
+          the importance of ethical leadership. I learned that effective representation requires not just advocating for immediate 
+          concerns, but understanding the broader organizational context and working collaboratively toward sustainable solutions. 
+          These insights have prepared me well for future leadership roles in professional and research settings.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="display: flex; justify-content: space-between; width: 100%; flex-wrap: wrap; align-items: center;">
+      <span>© 2026 David Ondieki · Biomedical Portfolio</span>
+      <span>
+        <a href="mailto:davidondieki046@gmail.com"><i class="fas fa-envelope"></i> davidondieki046@gmail.com</a> · 
+        <a href="#"><i class="fas fa-phone"></i> 0713666732</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

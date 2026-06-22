@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>David Ondieki · Biomedical Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0A192F; /* Deep Navy – blue base */
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #E6F1FF; /* Pale Blue-White */
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: 0.2px;
+    }
+
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* Navigation – blue surface with cyan/orange accents */
+    .navbar {
+      background-color: #0D2B4E; /* Rich medium blue */
+      border-bottom: 2px solid rgba(0, 245, 212, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background-color: rgba(13, 43, 78, 0.94);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.7);
+    }
+
+    .nav-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-weight: 750;
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+      color: #E6F1FF;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      color: #3B82F6; /* Bright blue */
+      font-size: 2.2rem;
+      filter: drop-shadow(0 0 14px rgba(59, 130, 246, 0.7));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 38px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 550;
+      font-size: 0.95rem;
+      color: #BFDBFE; /* Soft blue-white */
+      transition: all 0.25s ease;
+      padding-bottom: 5px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: #38BDF8; /* Sky blue hover */
+      border-bottom-color: #38BDF8;
+      text-shadow: 0 0 10px #38BDF8;
+    }
+
+    .nav-links .active {
+      color: #FF6B35; /* Orange accent on active */
+      border-bottom-color: #FF6B35;
+      font-weight: 650;
+      text-shadow: 0 0 10px #FF6B35;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 50px;
+      padding: 75px 0 60px;
+    }
+
+    .hero-text {
+      flex: 1 1 440px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid #3B82F6;
+      color: #60A5FA;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.7px;
+      padding: 6px 18px;
+      border-radius: 30px;
+      margin-bottom: 24px;
+    }
+
+    .hero-text h1 {
+      font-size: 3.6rem;
+      font-weight: 750;
+      line-height: 1.15;
+      color: #E6F1FF;
+      margin-bottom: 20px;
+    }
+
+    .hero-photo {
+      flex: 0 0 420px;
+      max-width: 420px;
+      width: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,0.14);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+      background: #0A192F;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      object-position: top center;
+    }
+
+    .blue-glow {
+      color: #38BDF8;
+      text-shadow: 0 0 18px #38BDF8;
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      color: #b9c8e0;
+      margin-bottom: 38px;
+      max-width: 560px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    /* Primary button – blue to cyan gradient */
+    .btn-primary {
+      background: linear-gradient(135deg, #2563EB, #06B6D4);
+      border: none;
+      padding: 15px 36px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #FFFFFF;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 30px rgba(37, 99, 235, 0.5), 0 6px 18px rgba(6, 182, 212, 0.3);
+      letter-spacing: 0.4px;
+    }
+
+    .btn-primary i {
+      color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 45px #2563EB, 0 0 55px #06B6D4;
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    /* Gold button for CV */
+    .btn-gold {
+      background: transparent;
+      border: 2px solid #F59E0B;
+      padding: 14px 32px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #F59E0B;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s;
+      box-shadow: 0 0 18px rgba(245, 158, 11, 0.4);
+      text-shadow: 0 0 8px #F59E0B;
+    }
+
+    .btn-gold i {
+      color: #F59E0B;
+    }
+
+    .btn-gold:hover {
+      background: #F59E0B;
+      color: #0A192F;
+      box-shadow: 0 0 38px #F59E0B;
+      text-shadow: none;
+    }
+    .btn-gold:hover i {
+      color: #0A192F;
+    }
+
+    .hero-visual {
+      flex: 1 1 400px;
+      background: #0D2B4E;
+      border-radius: 38px;
+      padding: 26px;
+      box-shadow: 0 0 45px rgba(37, 99, 235, 0.2), inset 0 0 35px rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-card {
+      background: #0A192F;
+      border-radius: 28px;
+      padding: 32px 22px;
+      width: 100%;
+      text-align: center;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .hero-icon-large {
+      font-size: 4.5rem;
+      color: #3B82F6;
+      margin-bottom: 18px;
+      filter: drop-shadow(0 0 22px #3B82F6);
+    }
+
+    .stat-line {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+      justify-content: center;
+    }
+
+    .stat-item {
+      background: #0D2B4E;
+      padding: 14px 22px;
+      border-radius: 20px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .stat-number {
+      font-weight: 750;
+      font-size: 1.8rem;
+      color: #38BDF8;
+      text-shadow: 0 0 12px #38BDF8;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: #E6F1FF;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .section-title {
+      margin: 60px 0 32px;
+      border-left: 5px solid #3B82F6;
+      padding-left: 24px;
+      box-shadow: 0 0 18px rgba(59, 130, 246, 0.25);
+    }
+
+    .section-title h2 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #E6F1FF;
+    }
+
+    .section-title p {
+      color: #94a3b8;
+      font-size: 1rem;
+      margin-top: 6px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .project-card {
+      background: #0D2B4E;
+      border-radius: 26px;
+      padding: 26px 22px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: #3B82F6;
+      box-shadow: 0 0 38px rgba(37, 99, 235, 0.4);
+      transform: translateY(-5px);
+    }
+
+    .card-icon {
+      font-size: 2.3rem;
+      color: #38BDF8;
+      margin-bottom: 18px;
+      filter: drop-shadow(0 0 12px #38BDF8);
+    }
+
+    .project-card h3 {
+      font-size: 1.4rem;
+      font-weight: 650;
+      margin-bottom: 10px;
+      color: #E6F1FF;
+    }
+
+    .meta {
+      color: #94a3b8;
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .project-card p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .link-glow {
+      color: #60A5FA;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+      font-size: 0.9rem;
+      border-bottom: 1px solid transparent;
+      text-shadow: 0 0 8px #60A5FA;
+    }
+
+    .link-glow i {
+      font-size: 0.8rem;
+    }
+
+    .link-glow:hover {
+      color: #F59E0B;
+      border-bottom-color: #F59E0B;
+      text-shadow: 0 0 12px #F59E0B;
+    }
+
+    .progress-indicator {
+      margin: 16px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: #1e3a5f;
+      border-radius: 12px;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .progress-fill-blue {
+      height: 100%;
+      background: linear-gradient(90deg, #2563EB, #38BDF8);
+      box-shadow: 0 0 18px #2563EB;
+      border-radius: 12px;
+    }
+
+    .progress-fill-cyan {
+      height: 100%;
+      background: linear-gradient(90deg, #06B6D4, #3B82F6);
+      box-shadow: 0 0 18px #06B6D4;
+      border-radius: 12px;
+    }
+
+    .progress-fill-gold {
+      height: 100%;
+      background: linear-gradient(90deg, #F59E0B, #FBBF24);
+      box-shadow: 0 0 18px #F59E0B;
+      border-radius: 12px;
+    }
+
+    .progress-text {
+      font-size: 0.75rem;
+      color: #E6F1FF;
+      font-weight: 500;
+    }
+
+    .alert-banner {
+      background: #0D2B4E;
+      border-left: 6px solid #F59E0B;
+      padding: 18px 26px;
+      border-radius: 16px;
+      margin: 35px 0 45px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      box-shadow: 0 0 24px rgba(245, 158, 11, 0.25);
+    }
+
+    .alert-banner i {
+      font-size: 2rem;
+      color: #F59E0B;
+      filter: drop-shadow(0 0 12px #F59E0B);
+    }
+
+    .alert-content strong {
+      color: #FBBF24;
+      text-shadow: 0 0 6px #FBBF24;
+    }
+
+    .footer {
+      background: #0D2B4E;
+      margin-top: 70px;
+      padding: 32px 0;
+      border-top: 1px solid rgba(59, 130, 246, 0.4);
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer a {
+      color: #38BDF8;
+      text-decoration: none;
+      font-weight: 500;
+      text-shadow: 0 0 6px #38BDF8;
+    }
+
+    .footer a:hover {
+      color: #F59E0B;
+      text-shadow: 0 0 12px #F59E0B;
+    }
+
+    @media (max-width: 760px) {
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      .nav-links {
+        gap: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-content">
+      <div class="logo">
+        <a href="index.html" style="display:flex;align-items:center;text-decoration:none;color:inherit;">
+          <i class="fas fa-dna"></i>
+          <span style="margin-left:10px;">David Ondieki</span>
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="leadership.html">Leadership</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-photo">
+        <img src="images/David.png" alt="David Ondieki portrait">
+      </div>
+      <div class="hero-text">
+        <span class="hero-badge"><i class="fas fa-flask"></i> Biomedical Science & Technology</span>
+        <h1>
+          <span class="blue-glow">Transforming Biomedical </span><br>research into precise, life-changing solutions.
+        </h1>
+        <p class="hero-description">
+          Dedicated Biomedical Science student at Egerton University (graduating Nov 2026). 
+          Hands-on experience in nanoparticle extraction, laboratory data management, and pathogen identification. 
+          Ready to contribute to impactful health programs.
+        </p>
+        <div class="button-group">
+          <a href="#projects" class="btn-primary"><i class="fas fa-microscope"></i> View Projects</a>
+          <a href="David-Ondieki-CV.pdf" class="btn-gold" download><i class="fas fa-file-pdf"></i> Download CV</a>
+        </div>
+      </div>
+    </section>
+
+  
+
+    <div class="section-title" id="projects">
+      <h2>Research & Laboratory Experience</h2>
+      <p>Hands-on projects from KALRO attachment & undergraduate research</p>
+    </div>
+
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="card-icon"><i class="fas fa-leaf"></i></div>
+        <h3>Nanoparticle Extraction</h3>
+        <div class="meta"><i class="far fa-calendar"></i> 2025 · Egerton University</div>
+        <p>Undergraduate research project: extracted nanoparticles using kales from silver nitrate. Conducted compound identification, efficiency testing, documented procedures, and analysed results using Microsoft Excel under the supervision of Dr. Caroline Kosgei.</p>
+        <div class="progress-indicator">
+          <span class="progress-text">analysis</span>
+          <div class="progress-bar"><div class="progress-fill-blue" style="width:92%;"></div></div>
+          <span class="progress-text">92%</span>
+        </div>
+        <a href="project-nanoparticle.html" class="link-glow">Project details <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="project-card">
+        <div class="card-icon"><i class="fas fa-database"></i></div>
+        <h3>KALRO Data Management</h3>
+        <div class="meta"><i class="far fa-calendar"></i> 2024 · KALRO (Victor Muhoma)</div>
+        <p>Industrial attachment at KALRO: managed sample reception and archiving, performed accurate data entry into laboratory systems, maintained documentation in compliance with safety and confidentiality protocols.</p>
+        <div class="progress-indicator">
+          <span class="progress-text">accuracy</span>
+          <div class="progress-bar"><div class="progress-fill-cyan" style="width:98%;"></div></div>
+          <span class="progress-text">98%</span>
+        </div>
+        <a href="project-kalro.html" class="link-glow">Case study <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="project-card">
+        <div class="card-icon"><i class="fas fa-users"></i></div>
+        <h3>Student Leadership & Teamwork</h3>
+        <div class="meta"><i class="far fa-calendar"></i> 2023–2025 · Egerton University</div>
+        <p>Served as a Congress Person in the Egerton University Student Congress, representing student interests, organising forums, and working collaboratively while balancing academics and football team commitments.</p>
+        <div class="progress-indicator">
+          <span class="progress-text">integrity</span>
+          <div class="progress-bar"><div class="progress-fill-gold" style="width:100%;"></div></div>
+          <span class="progress-text">100%</span>
+        </div>
+        <a href="project-leadership.html" class="link-glow">Learn more <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="display: flex; justify-content: space-between; width: 100%; flex-wrap: wrap; align-items: center;">
+      <span>© 2026 David Ondieki · Biomedical Portfolio</span>
+      <span>
+        <a href="mailto:davidondieki046@gmail.com"><i class="fas fa-envelope"></i> davidondieki046@gmail.com</a> · 
+        <a href="#"><i class="fas fa-phone"></i> 0713666732</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

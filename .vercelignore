@@ -1,0 +1,21 @@
+node_modules
+*.pyc
+__pycache__
+.DS_Store
+*.psd
+*.ai
+*.xcf
+*.iml
+/*.log
+/.vscode
+
+# keep site files
+!index.html
+!about.html
+!skills.html
+!leadership.html
+!contact.html
+!css/**
+!js/**
+!images/**
+!David-Ondieki-CV.pdf
